@@ -16,7 +16,20 @@ class WearableConnection {
 
   late StreamSubscription subscriptionFindAndConnect;
   late String connectedString  = "";
-  late String disconnectedString = "";
+
+
+  late StreamController<dynamic> _statusStreamController;
+  late Stream<dynamic> statusStream;
+  late Sink<dynamic> _statusSink;
+
+
+   init(
+      String date, int activity, gender, height, BluetoothDevice device) {
+    _statusStreamController =  StreamController<dynamic>.broadcast();
+    statusStream = _statusStreamController.stream;
+    _statusSink = _statusStreamController.sink;
+  }
+
 
   void findEndConnect() {
     FlutterBlue.instance.startScan(timeout: const Duration(seconds: 10));
@@ -29,12 +42,10 @@ class WearableConnection {
           print("VIDAVO_DEVICES: CONNECTED WEARABLE ");
         //  connected = "connected";
        //   startExam(element.device, element.device.id.toString());
+          _statusSink.add(WearableStatus.connected);
           subscriptionFindAndConnect.cancel();
+          dispose();
 
-
-        }else {
-          disconnectedString = "Disconnected";
-          print("VIDAVO_DEVICES: DISCONNECTED WEARABLE ");
 
         }
       });
@@ -43,12 +54,9 @@ class WearableConnection {
   //  return  connected;
   }
 
-  String connected(){
-  return connectedString;
-  }
+  void dispose(){
 
-  String disconnected(){
-    return disconnectedString;
+    _statusStreamController.close();
   }
 
 }
@@ -211,7 +219,11 @@ class WearableConnection {
 
 
 
-  enum WearableStatus { connected, disconnected, finished, failed }
+  enum WearableStatus {
+     connected,
+     disconnected,
+     finished,
+     failed, }
 
 
 
