@@ -3,13 +3,6 @@ import 'dart:async';
 import 'package:flutter_blue/flutter_blue.dart';
 
 
-void main(){
-
-  WearableConnection();
-
-
-}
-
 
 class WearableConnection {
 
@@ -24,10 +17,11 @@ class WearableConnection {
 
 
    init(
-      String date, int activity, gender, height, BluetoothDevice device) {
+     ) {
     _statusStreamController =  StreamController<dynamic>.broadcast();
     statusStream = _statusStreamController.stream;
     _statusSink = _statusStreamController.sink;
+    findEndConnect();
   }
 
 

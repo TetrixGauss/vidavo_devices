@@ -9,7 +9,7 @@ import 'package:vidavo_devices/wearable_states.dart';
   WearableStates wearable = WearableStates();
 
   void connect(){
-     WearableConnection().findEndConnect();
+     WearableConnection().init();
 
   }
 
