@@ -26,6 +26,7 @@ class WearableConnection {
         if (element.device.name.startsWith("Vidavo_")) {
           FlutterBlue.instance.stopScan();
           connectedString = "Connected";
+          print("VIDAVO_DEVICES: CONNECTED WEARABLE ");
         //  connected = "connected";
        //   startExam(element.device, element.device.id.toString());
           subscriptionFindAndConnect.cancel();
@@ -33,6 +34,8 @@ class WearableConnection {
 
         }else {
           disconnectedString = "Disconnected";
+          print("VIDAVO_DEVICES: DISCONNECTED WEARABLE ");
+
         }
       });
     });
