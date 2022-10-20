@@ -7,9 +7,18 @@ import 'package:vidavo_devices/wearable_connection.dart';
  class VidavoDevices {
 
 
-  String connectWearable(){
-  return  WearableConnection().findEndConnect();
+
+  void connect(){
+     WearableConnection().findEndConnect();
 
   }
+
+  void connected(){
+  }
+
+  void disconnected(){}
+
+   void timeout(){}
 }
+
 
