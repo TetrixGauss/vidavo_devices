@@ -1,12 +1,12 @@
 library vidavo_devices;
 
 import 'package:vidavo_devices/wearable_connection.dart';
+import 'package:vidavo_devices/wearable_states.dart';
 
 
 
  class VidavoDevices {
-
-
+  WearableStates wearable = WearableStates();
 
   void connect(){
      WearableConnection().findEndConnect();
