@@ -8,6 +8,9 @@ import 'package:vidavo_devices/wearable_states.dart';
  class VidavoDevices {
   WearableStates wearable = WearableStates();
 
+  Future<String> returnStrinExample(){
+   return wearable.connect();
+  }
   void connect(){
      WearableConnection().init();
 
