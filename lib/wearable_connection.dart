@@ -2,12 +2,21 @@ import 'dart:async';
 
 import 'package:flutter_blue/flutter_blue.dart';
 
+
+void main(){
+
+  WearableConnection();
+
+
+}
+
+
 class WearableConnection {
 
 
   late StreamSubscription subscriptionFindAndConnect;
-  late String connectedString ;
-  late String disconnectedString ;
+  late String connectedString  = "";
+  late String disconnectedString = "";
 
   void findEndConnect() {
     FlutterBlue.instance.startScan(timeout: const Duration(seconds: 10));
